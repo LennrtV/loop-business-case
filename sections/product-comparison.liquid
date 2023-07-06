@@ -1,63 +1,25 @@
 <section class="comparison-section section-{{ section.id }}">
   <div class="comparison-container">
 
-    <div class="comparison-row">
-    {% for block in section.blocks %}
+    <div class="comparison-row comparison-shadow">
+    {% for product in section.settings.product_list %}
       <div class="comparison-column">
-        <p class="comparison-product-title">{{ block.settings.product.title }}</p>
-        <p class="comparison-product-price">{{ block.settings.product.price | money }}</p>
-        <a class="comparison-product-url" href="{{block.settings.product.url}}">Buy now →</a>
+        <p class="comparison-product-title h3">{{ product.title }}</p>
+        <p class="comparison-product-price">{{ product.price | money }}</p>
+        <a class="comparison-product-url" href="{{ product.url }}">Buy now →</a>
       </div>
     {% endfor %}
     </div>
 
-    <div class="comparison-subtitle-wrapper">
-      <h3 class="comparison-subtitle">Best used</h3>
-    </div>
+    {% for block in section.blocks %}
+      {%- case block.type -%}
+        {%- when 'attribute' -%}
+        <div class="attribute-title-wrapper">
+          <h3 class="attribute-title">{{ block.settings.title }}</h3>
+        </div>
+      {% endcase %}
+    {% endfor %}
 
-    <div class="comparison-subtitle-wrapper">
-      <h3 class="comparison-subtitle">Perfect for</h3>
-    </div>
-
-    <div class="comparison-subtitle-wrapper">
-      <h3 class="comparison-subtitle">Noise reduction</h3>
-    </div>
-
-    <div class="comparison-subtitle-wrapper">
-      <h3 class="comparison-subtitle">Filter fine-tuned for</h3>
-    </div>
-
-    <div class="comparison-subtitle-wrapper">
-      <h3 class="comparison-subtitle">Certified Hearing Protection</h3>
-    </div>
-
-    <div class="comparison-subtitle-wrapper">
-      <h3 class="comparison-subtitle">Reusable & Sustainable</h3>
-    </div>
-
-    <div class="comparison-subtitle-wrapper">
-      <h3 class="comparison-subtitle">Adjustable ear tip sizes</h3>
-    </div>
-
-    <div class="comparison-subtitle-wrapper">
-      <h3 class="comparison-subtitle">Portable Carry Case</h3>
-    </div>
-
-    <div class="comparison-subtitle-wrapper">
-      <h3 class="comparison-subtitle">Fully washable</h3>
-    </div>
-
-    <div class="comparison-subtitle-wrapper">
-      <h3 class="comparison-subtitle">Noise Reduction Rating (NRR)</h3>
-    </div>
-
-    <div class="comparison-subtitle-wrapper">
-      <h3 class="comparison-subtitle">100-day free  returns</h3>
-    </div>
-
-    <div class="comparison-subtitle-wrapper">
-      <h3 class="comparison-subtitle">Loop Mute</h3>
-    </div>
   </div>
 </section>
 
@@ -69,29 +31,38 @@
 
   .comparison-column {
     display: inline-block;
-    width: {{ '100%' | divided_by: section.blocks.size }}%;
+    width: {{ '100%' | divided_by: section.settings.product_list.count }}%;
     min-width: 165px;
     padding: 10px;
     text-align: center;
   }
 
-  .comparison-subtitle-wrapper {
+  .comparison-shadow {
+    box-shadow: 0px 4px 4px 0px #0000001A;
+  }
+
+  .attribute-title-wrapper {
     background: #EFEFEF;
     padding: 20px 40px;
   }
 
-  .comparison-subtitle {
+  .comparison-product-title,
+  .attribute-title {
     font-size: 24px;
+  }
+
+  .attribute-title {
     margin: 0;
     padding: 0;
   }
 
   @media screen and (min-width: 750px) {
-    .comparison-subtitle-wrapper {
+    .attribute-title-wrapper {
       padding: 20px 65px;
     }
 
-    .comparison-subtitle {
+    .comparison-product-title,
+    .attribute-title {
       font-size: 32px;
     }
   }
@@ -105,17 +76,23 @@
     {
       "type": "header",
       "content": "Add products to compare"
+    },
+    {
+      "type": "product_list",
+      "id": "product_list",
+      "label": "Products to compare",
+      "limit": 4
     }
   ],
   "blocks": [
     {
-      "type": "product",
-      "name": "Comparison product",
+      "type": "attribute",
+      "name": "Comparison attribute",
       "settings": [
         {
-          "type": "product",
-          "id": "product",
-          "label": "Product"
+          "type": "text",
+          "id": "title",
+          "label": "Attribute title"
         }
       ]
     }

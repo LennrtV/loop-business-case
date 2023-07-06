@@ -3,31 +3,99 @@
     "product-comparison-test": {
       "type": "product-comparison",
       "blocks": {
-        "product-quiet": {
-          "type": "product",
+        "attribute1": {
+          "type": "attribute",
           "settings": {
-            "product": "quiet"
+            "title": "Best used"
           }
         },
-        "product-engage": {
-          "type": "product",
+        "attribute2": {
+          "type": "attribute",
           "settings": {
-            "product": "engage"
+            "title": "Perfect for"
           }
         },
-        "product-experience": {
-          "type": "product",
+        "attribute3": {
+          "type": "attribute",
           "settings": {
-            "product": "experience"
+            "title": "Noise reduction "
+          }
+        },
+        "attribute4": {
+          "type": "attribute",
+          "settings": {
+            "title": "Filter fine-tuned for"
+          }
+        },
+        "attribute5": {
+          "type": "attribute",
+          "settings": {
+            "title": "Certified Hearing Protection"
+          }
+        },
+        "attribute6": {
+          "type": "attribute",
+          "settings": {
+            "title": "Reusable & Sustainable"
+          }
+        },
+        "attribute7": {
+          "type": "attribute",
+          "settings": {
+            "title": "Adjustable ear tip sizes"
+          }
+        },
+        "attribute8": {
+          "type": "attribute",
+          "settings": {
+            "title": "Portable Carry Case"
+          }
+        },
+        "attribute9": {
+          "type": "attribute",
+          "settings": {
+            "title": "Fully washable"
+          }
+        },
+        "attribute10": {
+          "type": "attribute",
+          "settings": {
+            "title": "Noise Reduction Rating (NRR)"
+          }
+        },
+        "attribute11": {
+          "type": "attribute",
+          "settings": {
+            "title": "100-day free  returns"
+          }
+        },
+        "attribute12": {
+          "type": "attribute",
+          "settings": {
+            "title": "Loop Mute"
           }
         }
       },
       "block_order": [
-        "product-quiet",
-        "product-engage",
-        "product-experience"
+        "attribute1",
+        "attribute2",
+        "attribute3",
+        "attribute4",
+        "attribute5",
+        "attribute6",
+        "attribute7",
+        "attribute8",
+        "attribute9",
+        "attribute10",
+        "attribute11",
+        "attribute12"
       ],
       "settings": {
+        "product_list": [
+          "quiet",
+          "engage",
+          "experience"
+        ]
       }
     },
     "1bedd7f3-5ca1-448d-ad26-e79a24cc349a": {
