@@ -410,6 +410,15 @@
           "enable": true,
           "debug_enable": false
         }
+      },
+      "custom-liquid": {
+        "type": "custom-liquid",
+        "settings": {
+          "custom_liquid": "",
+          "color_scheme": "background-1",
+          "padding_top": 40,
+          "padding_bottom": 52
+        }
       }
     },
     "content_for_index": [
@@ -625,5 +634,10 @@
         }
       }
     }
+  },
+  "platform_customizations": {
+    "custom_css": [
+      "\/* Github connection test *\/"
+    ]
   }
 }
