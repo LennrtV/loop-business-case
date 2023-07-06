@@ -33,7 +33,7 @@
           {%- endfor -%}
         </div>
         <p class="comparison-product-price">{{ product.price | money }}</p>
-        <a class="comparison-product-buy" href="{{ product.url }}">Buy Now</a>
+        <a class="comparison-product-buy button button--primary" href="{{ product.url }}">Buy Now</a>
         <p class="comparison-product-return" >{{ product.metafields.lennart.return_policy }}</p>
         <a class="comparison-product-url" href="{{ product.url }}">Learn More →</a>
       </div>
@@ -44,7 +44,7 @@
     <div class="comparison-row comparison-shadow">
     {% for product in section.settings.product_list %}
       <div class="comparison-column">
-        <p class="comparison-product-benefit-title">{{ product.metafields.lennart.key_benefit_title }}</p>
+        <p class="comparison-product-benefit-title h3">{{ product.metafields.lennart.key_benefit_title }}</p>
         <p class="comparison-product-benefit-description">{{ product.metafields.lennart.key_benefit_description }}</p>
       </div>
     {% endfor %}
@@ -52,10 +52,73 @@
 
     {% for block in section.blocks %}
       {%- case block.type -%}
+
         {%- when 'attribute' -%}
         <div class="attribute-title-wrapper">
           <h3 class="attribute-title">{{ block.settings.title }}</h3>
         </div>
+
+        {%- when 'attribute_icon' -%}
+          <div class="attribute-title-wrapper">
+            <h3 class="attribute-title">{{ block.settings.title }}</h3>
+          </div>
+          <div class="attribute-container">
+            {% for product in section.settings.product_list %}
+              <div class="comparison-column">
+                <p class="attribute-value" >{{ product.metafields.lennart[block.settings.attribute] }}</p>
+                <img width="auto" height="32" src="
+                {{'attribute' 
+                | append: '-' 
+                | append: block.settings.title 
+                | append: '-' 
+                | append: product.metafields.lennart[block.settings.attribute]
+                | append: '.svg' 
+                | downcase | replace: ' ', '_' | asset_url }}">
+              </div>
+            {% endfor %}
+          </div>
+
+        {%- when 'attribute_icon_list' -%}
+          <div class="attribute-title-wrapper">
+            <h3 class="attribute-title">{{ block.settings.title }}</h3>
+          </div>
+          <div class="attribute-container attribute-icon-list-container">
+            {% for product in section.settings.product_list %}
+              <div class="comparison-column">
+
+              {% for value in product.metafields.lennart[block.settings.attribute].value %}
+                <script>console.log({{value}});</script>
+                <div class="attribute-icon-list-wrapper">
+                  <img width="auto" height="71" src="
+                  {{'attribute' 
+                  | append: '-' 
+                  | append: block.settings.title 
+                  | append: '-' 
+                  | append: value
+                  | append: '.svg' 
+                  | downcase | replace: '& ', '' | replace: ' ', '_' | asset_url }}">
+                  <p class="attribute-value" >{{ value }}</p>
+                </div>
+              {% endfor %}
+
+              </div>
+            {% endfor %}
+          </div>
+          
+        {%- when 'attribute_text' -%}
+          <div class="attribute-title-wrapper">
+            <h3 class="attribute-title">{{ block.settings.title }}</h3>
+          </div>
+          <div class="attribute-container">
+            {% for product in section.settings.product_list %}
+              <div class="comparison-column">
+                {% if block.settings.prefix %}<p class="attribute-value-prefix">{{ block.settings.prefix }}</p>{% endif %}
+                <p class="attribute-value {% if block.settings.large_text %} attribute-value-large{% endif %}" >{{ product.metafields.lennart[block.settings.attribute] }}</p>
+                {% if block.settings.suffix %}<p class="attribute-value-suffix">{{ block.settings.suffix }}</p>{% endif %}
+              </div>
+            {% endfor %}
+          </div>
+
       {% endcase %}
     {% endfor %}
 
@@ -100,6 +163,30 @@
     height: auto;
   }
 
+  .attribute-container {
+    margin-top: 10px;
+    margin-bottom: 24px;
+  }
+
+  .attribute-icon-list-container {
+    margin-top: 24px;
+  }
+
+  .attribute-icon-list-wrapper img {
+    width: 63px;
+    height: 63px;
+  }
+
+  .attribute-icon-list-wrapper p {
+    margin-top: 0;
+    margin-bottom: 40px;
+  }
+
+  .attribute-value-large {
+    font-size: 1.2em;
+    font-weight: 600;
+  }
+
   @media screen and (min-width: 750px) {
     .attribute-title-wrapper {
       padding: 20px 65px;
@@ -113,6 +200,20 @@
     .comparison-product-image {
       width: 250px;
       height: auto;
+    }
+
+    .attribute-container {
+      margin-top: 10px;
+      margin-bottom: 40px;
+    }
+
+    .attribute-icon-list-container {
+      margin-top: 40px;
+    }
+
+    .attribute-icon-list-wrapper img {
+      width: 71px;
+      height: 71px;
     }
   }
 {% endstyle %}
@@ -136,12 +237,104 @@
   "blocks": [
     {
       "type": "attribute",
-      "name": "Comparison attribute",
+      "name": "Attribute",
       "settings": [
         {
           "type": "text",
           "id": "title",
           "label": "Attribute title"
+        }
+      ]
+    },
+    {
+      "type": "attribute_icon",
+      "name": "Icon attribute",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Attribute title"
+        },
+        {
+          "type": "select",
+          "id": "attribute",
+          "label": "Product attribute metafield",
+          "options": [
+            {
+              "value": "best_used",
+              "label": "Best used"
+            }
+          ],
+          "default": "best_used"
+        }
+      ]
+    },
+    {
+      "type": "attribute_icon_list",
+      "name": "Icon list attribute",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Attribute title"
+        },
+        {
+          "type": "select",
+          "id": "attribute",
+          "label": "Product attribute metafield",
+          "options": [
+            {
+              "value": "perfect_for",
+              "label": "Perfect for"
+            }
+          ],
+          "default": "perfect_for"
+        }
+      ]
+    },
+    {
+      "type": "attribute_text",
+      "name": "Text attribute",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Attribute title"
+        },
+        {
+          "type": "select",
+          "id": "attribute",
+          "label": "Product attribute metafield",
+          "options": [
+            {
+              "value": "filter_tuned_for",
+              "label": "Filter fine-tuned for"
+            },
+            {
+              "value": "sound_reduction",
+              "label": "Sound reduction"
+            },
+            {
+              "value": "nrr",
+              "label": "Noise Reduction Rating"
+            }
+          ],
+          "default": "filter_tuned_for"
+        },
+        {
+          "type": "checkbox",
+          "id": "large_text",
+          "label": "Larger text"
+        },
+        {
+          "type": "text",
+          "id": "prefix",
+          "label": "Text before metafield value"
+        },
+        {
+          "type": "text",
+          "id": "suffix",
+          "label": "Text after metafield value"
         }
       ]
     }

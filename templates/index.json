@@ -4,25 +4,29 @@
       "type": "product-comparison",
       "blocks": {
         "attribute1": {
-          "type": "attribute",
+          "type": "attribute_icon",
           "settings": {
             "title": "Best used"
           }
         },
         "attribute2": {
-          "type": "attribute",
+          "type": "attribute_icon_list",
           "settings": {
             "title": "Perfect for"
           }
         },
         "attribute3": {
-          "type": "attribute",
+          "type": "attribute_text",
           "settings": {
-            "title": "Noise reduction "
+            "title": "Noise reduction",
+            "attribute": "sound_reduction",
+            "prefix": "up to",
+            "suffix": "noise reduction",
+            "large_text": true
           }
         },
         "attribute4": {
-          "type": "attribute",
+          "type": "attribute_text",
           "settings": {
             "title": "Filter fine-tuned for"
           }
@@ -58,9 +62,11 @@
           }
         },
         "attribute10": {
-          "type": "attribute",
+          "type": "attribute_text",
           "settings": {
-            "title": "Noise Reduction Rating (NRR)"
+            "title": "Noise Reduction Rating (NRR)",
+            "attribute": "nrr",
+            "large_text": true
           }
         },
         "attribute11": {
