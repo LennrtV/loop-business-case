@@ -1,12 +1,51 @@
 <section class="comparison-section section-{{ section.id }}">
   <div class="comparison-container">
 
+    <!-- product summary -->
     <div class="comparison-row comparison-shadow">
     {% for product in section.settings.product_list %}
       <div class="comparison-column">
         <p class="comparison-product-title h3">{{ product.title }}</p>
         <p class="comparison-product-price">{{ product.price | money }}</p>
         <a class="comparison-product-url" href="{{ product.url }}">Buy now →</a>
+      </div>
+    {% endfor %}
+    </div>
+
+
+    <!-- product description -->
+    <div class="comparison-row">
+    {% for product in section.settings.product_list %}
+      <div class="comparison-column">
+        <div class="comparison-product-image-wrapper">
+          {% assign media = product.featured_media %}
+          <img class="comparison-product-image"
+            src="{{ media.preview_image | image_url: width: 750 }}"
+            alt="{{ media.alt | escape }}"
+            loading="lazy"
+            width="250"
+            height="{{250 | divided_by: media.preview_image.aspect_ratio | ceil }}"
+            data-media-id="{{ media.id }}"
+          >
+        </div>
+        <div class="comparison-product-variants">
+          {%- for variant in product.variants -%}             
+          {%- endfor -%}
+        </div>
+        <p class="comparison-product-price">{{ product.price | money }}</p>
+        <a class="comparison-product-buy" href="{{ product.url }}">Buy Now</a>
+        <p class="comparison-product-return" >{{ product.metafields.lennart.return_policy }}</p>
+        <a class="comparison-product-url" href="{{ product.url }}">Learn More →</a>
+      </div>
+    {% endfor %}
+    </div>
+
+    <!-- product benefit -->
+    <div class="comparison-row comparison-shadow">
+    {% for product in section.settings.product_list %}
+      <div class="comparison-column">
+        <p class="comparison-product-benefit-title">{{ product.metafields.lennart.key_benefit_title }}</p>
+        <p class="comparison-product-benefit-description">{{ product.metafields.lennart.key_benefit_description }}</p>
       </div>
     {% endfor %}
     </div>
@@ -56,6 +95,11 @@
     padding: 0;
   }
 
+  .comparison-product-image {
+    width: 125px;
+    height: auto;
+  }
+
   @media screen and (min-width: 750px) {
     .attribute-title-wrapper {
       padding: 20px 65px;
@@ -64,6 +108,11 @@
     .comparison-product-title,
     .attribute-title {
       font-size: 32px;
+    }
+
+    .comparison-product-image {
+      width: 250px;
+      height: auto;
     }
   }
 {% endstyle %}
