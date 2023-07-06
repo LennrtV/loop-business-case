@@ -1,0 +1,124 @@
+<section class="comparison-section section-{{ section.id }}">
+  <div class="comparison-container">
+
+    <div class="comparison-row">
+    {% for block in section.blocks %}
+      <div class="comparison-column">
+        <p class="comparison-product-title">{{ block.settings.product.title }}</p>
+        <p class="comparison-product-price">{{ block.settings.product.price | money }}</p>
+        <a class="comparison-product-url" href="{{block.settings.product.url}}">Buy now →</a>
+      </div>
+    {% endfor %}
+    </div>
+
+    <div class="comparison-subtitle-wrapper">
+      <h3 class="comparison-subtitle">Best used</h3>
+    </div>
+
+    <div class="comparison-subtitle-wrapper">
+      <h3 class="comparison-subtitle">Perfect for</h3>
+    </div>
+
+    <div class="comparison-subtitle-wrapper">
+      <h3 class="comparison-subtitle">Noise reduction</h3>
+    </div>
+
+    <div class="comparison-subtitle-wrapper">
+      <h3 class="comparison-subtitle">Filter fine-tuned for</h3>
+    </div>
+
+    <div class="comparison-subtitle-wrapper">
+      <h3 class="comparison-subtitle">Certified Hearing Protection</h3>
+    </div>
+
+    <div class="comparison-subtitle-wrapper">
+      <h3 class="comparison-subtitle">Reusable & Sustainable</h3>
+    </div>
+
+    <div class="comparison-subtitle-wrapper">
+      <h3 class="comparison-subtitle">Adjustable ear tip sizes</h3>
+    </div>
+
+    <div class="comparison-subtitle-wrapper">
+      <h3 class="comparison-subtitle">Portable Carry Case</h3>
+    </div>
+
+    <div class="comparison-subtitle-wrapper">
+      <h3 class="comparison-subtitle">Fully washable</h3>
+    </div>
+
+    <div class="comparison-subtitle-wrapper">
+      <h3 class="comparison-subtitle">Noise Reduction Rating (NRR)</h3>
+    </div>
+
+    <div class="comparison-subtitle-wrapper">
+      <h3 class="comparison-subtitle">100-day free  returns</h3>
+    </div>
+
+    <div class="comparison-subtitle-wrapper">
+      <h3 class="comparison-subtitle">Loop Mute</h3>
+    </div>
+  </div>
+</section>
+
+{% style %}
+  .comparison-container {
+    overflow-x: scroll;
+    white-space: nowrap;
+  }
+
+  .comparison-column {
+    display: inline-block;
+    width: {{ '100%' | divided_by: section.blocks.size }}%;
+    min-width: 165px;
+    padding: 10px;
+    text-align: center;
+  }
+
+  .comparison-subtitle-wrapper {
+    background: #EFEFEF;
+    padding: 20px 40px;
+  }
+
+  .comparison-subtitle {
+    font-size: 24px;
+    margin: 0;
+    padding: 0;
+  }
+
+  @media screen and (min-width: 750px) {
+    .comparison-subtitle-wrapper {
+      padding: 20px 65px;
+    }
+
+    .comparison-subtitle {
+      font-size: 32px;
+    }
+  }
+{% endstyle %}
+
+{% schema %}
+{
+  "name": "Product comparison",
+  "class": "section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Add products to compare"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "product",
+      "name": "Comparison product",
+      "settings": [
+        {
+          "type": "product",
+          "id": "product",
+          "label": "Product"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
