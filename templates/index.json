@@ -1,5 +1,35 @@
 {
   "sections": {
+    "product-comparison-test": {
+      "type": "product-comparison",
+      "blocks": {
+        "product-quiet": {
+          "type": "product",
+          "settings": {
+            "product": "quiet"
+          }
+        },
+        "product-engage": {
+          "type": "product",
+          "settings": {
+            "product": "engage"
+          }
+        },
+        "product-experience": {
+          "type": "product",
+          "settings": {
+            "product": "experience"
+          }
+        }
+      },
+      "block_order": [
+        "product-quiet",
+        "product-engage",
+        "product-experience"
+      ],
+      "settings": {
+      }
+    },
     "1bedd7f3-5ca1-448d-ad26-e79a24cc349a": {
       "type": "loop-hero-banner",
       "blocks": {
@@ -164,7 +194,6 @@
         "template--17168669081913__b3328531-785d-420a-b5f5-96dc611a5b2b-1670324748f3718ec4-0": {
           "type": "slide",
           "settings": {
-            "image": "shopify:\/\/shop_images\/Use_Cases_Desk_1_4163ffe8-8a09-4c27-8968-29166a4086a2.jpg",
             "heading": "Noise sensitivity",
             "heading_size": "h1",
             "subheading": "Manage your anxiety and experience true calm.",
@@ -182,7 +211,6 @@
         "template--17168669081913__b3328531-785d-420a-b5f5-96dc611a5b2b-1670324748f3718ec4-1": {
           "type": "slide",
           "settings": {
-            "image": "shopify:\/\/shop_images\/Use_Cases_Desk_2_32f8151d-9129-4eca-ab0a-40e794184eb3.jpg",
             "heading": "Sleeping & Napping",
             "heading_size": "h1",
             "subheading": "Fall asleep and stay asleep.",
@@ -200,7 +228,6 @@
         "2686226a-f25c-48e8-9138-c5d55d54668b": {
           "type": "slide",
           "settings": {
-            "image": "shopify:\/\/shop_images\/Use_Cases_Desk_3_ebea2958-4e82-4669-8072-ef4f13ce6027.jpg",
             "heading": "Focus",
             "heading_size": "h1",
             "subheading": "Increase your productivity 3x by removing noisy distractions.",
@@ -218,7 +245,6 @@
         "3bc21252-dd08-432e-9d8a-3ff95dd79f96": {
           "type": "slide",
           "settings": {
-            "image": "shopify:\/\/shop_images\/Use_Cases_Desk_4_34f74f80-8543-4c4d-b6c4-b03966e6be2e.jpg",
             "heading": "Nightlife & events",
             "heading_size": "h1",
             "subheading": "Experience the magic, while protecting your ears in style.",
@@ -236,7 +262,6 @@
         "585fb82f-e09c-4839-88c5-edd62562ce34": {
           "type": "slide",
           "settings": {
-            "image": "shopify:\/\/shop_images\/Use_Cases_Desk_5_9a988d56-1033-4345-b86b-569db65d0a44.jpg",
             "heading": "Motorcycling",
             "heading_size": "h1",
             "subheading": "Reduce the noise, enjoy the ride.",
@@ -438,6 +463,7 @@
     }
   },
   "order": [
+    "product-comparison-test",
     "1bedd7f3-5ca1-448d-ad26-e79a24cc349a",
     "f6f4f276-b004-483c-b80a-ececc2c49d2d",
     "1d5d2ea6-a74c-4f79-86b8-f74eb7a40184",
