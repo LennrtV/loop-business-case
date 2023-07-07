@@ -7,7 +7,7 @@
       <div class="comparison-column">
         <p class="comparison-product-title h3">{{ product.title }}</p>
         <p class="comparison-product-price">{{ product.price | money }}</p>
-        <a class="comparison-product-url" href="{{ product.url }}">Buy now →</a>
+        <a class="comparison-product-url large-text" href="{{ product.url }}">Buy now →</a>
       </div>
     {% endfor %}
     </div>
@@ -41,7 +41,7 @@
     </div>
 
     <!-- product benefit -->
-    <div class="comparison-row comparison-shadow">
+    <div class="comparison-row">
     {% for product in section.settings.product_list %}
       <div class="comparison-column">
         <p class="comparison-product-benefit-title h3">{{ product.metafields.lennart.key_benefit_title }}</p>
@@ -112,7 +112,7 @@
             {% for product in section.settings.product_list %}
               <div class="comparison-column">
                 {% if block.settings.prefix %}<p class="attribute-value-prefix">{{ block.settings.prefix }}</p>{% endif %}
-                <p class="attribute-value {% if block.settings.large_text %} attribute-value-large{% endif %}" >{{ product.metafields.lennart[block.settings.attribute] }}</p>
+                <p class="attribute-value {% if block.settings.large_text %} large-text{% endif %}" >{{ product.metafields.lennart[block.settings.attribute] }}</p>
                 {% if block.settings.suffix %}<p class="attribute-value-suffix">{{ block.settings.suffix }}</p>{% endif %}
               </div>
             {% endfor %}
@@ -165,7 +165,8 @@
   }
 
   .comparison-product-title,
-  .attribute-title {
+  .attribute-title,
+  .large-text {
     font-size: 24px;
   }
 
@@ -203,13 +204,20 @@
     font-weight: 600;
   }
 
+  .comparison-product-url {
+    color: #4E26B8;
+    font-weight: 600;
+    text-decoration: none;
+  }
+
   @media screen and (min-width: 750px) {
     .attribute-title-wrapper {
       padding: 20px 65px;
     }
 
     .comparison-product-title,
-    .attribute-title {
+    .attribute-title, 
+    .large-text {
       font-size: 32px;
     }
 
@@ -230,6 +238,10 @@
     .attribute-icon-list-wrapper img {
       width: 71px;
       height: 71px;
+    }
+
+    .comparison-product-url {
+      font-size: 32px;
     }
   }
 {% endstyle %}
