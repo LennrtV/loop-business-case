@@ -87,7 +87,6 @@
               <div class="comparison-column">
 
               {% for value in product.metafields.lennart[block.settings.attribute].value %}
-                <script>console.log({{value}});</script>
                 <div class="attribute-icon-list-wrapper">
                   <img width="auto" height="71" src="
                   {{'attribute' 
@@ -115,6 +114,23 @@
                 {% if block.settings.prefix %}<p class="attribute-value-prefix">{{ block.settings.prefix }}</p>{% endif %}
                 <p class="attribute-value {% if block.settings.large_text %} attribute-value-large{% endif %}" >{{ product.metafields.lennart[block.settings.attribute] }}</p>
                 {% if block.settings.suffix %}<p class="attribute-value-suffix">{{ block.settings.suffix }}</p>{% endif %}
+              </div>
+            {% endfor %}
+          </div>
+
+        {%- when 'attribute_checkmark' -%}
+          <div class="attribute-title-wrapper">
+            <h3 class="attribute-title">{{ block.settings.title }}</h3>
+          </div>
+          <div class="attribute-container">
+            {% for product in section.settings.product_list %}
+              <div class="comparison-column">
+                <img width="auto" height="42" width="42" src="
+                {{'attribute-checkmark' 
+                | append: '-' 
+                | append: product.metafields.lennart[block.settings.attribute].value
+                | append: '.svg' 
+                | downcase | replace: ' ', '_' | asset_url }}">
               </div>
             {% endfor %}
           </div>
@@ -335,6 +351,29 @@
           "type": "text",
           "id": "suffix",
           "label": "Text after metafield value"
+        }
+      ]
+    },
+    {
+      "type": "attribute_checkmark",
+      "name": "Checkmark attribute",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Attribute title"
+        },
+        {
+          "type": "select",
+          "id": "attribute",
+          "label": "Product attribute metafield",
+          "options": [
+            {
+              "value": "certified_hearing_protection",
+              "label": "Certified Hearing Protection"
+            }
+          ],
+          "default": "certified_hearing_protection"
         }
       ]
     }

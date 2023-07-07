@@ -32,33 +32,34 @@
           }
         },
         "attribute5": {
-          "type": "attribute",
+          "type": "attribute_checkmark",
           "settings": {
             "title": "Certified Hearing Protection"
           }
         },
         "attribute6": {
-          "type": "attribute",
+          "type": "attribute_checkmark",
           "settings": {
             "title": "Reusable & Sustainable"
           }
         },
         "attribute7": {
-          "type": "attribute",
+          "type": "attribute_checkmark",
           "settings": {
             "title": "Adjustable ear tip sizes"
           }
         },
         "attribute8": {
-          "type": "attribute",
+          "type": "attribute_checkmark",
           "settings": {
             "title": "Portable Carry Case"
           }
         },
         "attribute9": {
-          "type": "attribute",
+          "type": "attribute_checkmark",
           "settings": {
-            "title": "Fully washable"
+            "title": "Fully washable",
+            "attribute": "fully_washable"
           }
         },
         "attribute10": {
@@ -70,7 +71,7 @@
           }
         },
         "attribute11": {
-          "type": "attribute",
+          "type": "attribute_checkmark",
           "settings": {
             "title": "100-day free  returns"
           }
