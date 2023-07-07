@@ -6,8 +6,8 @@
     {% for product in section.settings.product_list %}
       <div class="comparison-column">
         <p class="comparison-product-title h3">{{ product.title }}</p>
-        <p class="comparison-product-price">{{ product.price | money }}</p>
-        <a class="comparison-product-url large-text" href="{{ product.url }}">Buy now →</a>
+        <p class="comparison-product-price large-text-md-up">{{ product.price | money }}</p>
+        <a class="comparison-product-url large-text bold-text" href="{{ product.url }}">Buy now →</a>
       </div>
     {% endfor %}
     </div>
@@ -62,7 +62,7 @@
           <div class="attribute-title-wrapper">
             <h3 class="attribute-title">{{ block.settings.title }}</h3>
           </div>
-          <div class="attribute-container">
+          <div class="attribute-container attribute-icon-container">
             {% for product in section.settings.product_list %}
               <div class="comparison-column">
                 <p class="attribute-value" >{{ product.metafields.lennart[block.settings.attribute] }}</p>
@@ -108,7 +108,7 @@
           <div class="attribute-title-wrapper">
             <h3 class="attribute-title">{{ block.settings.title }}</h3>
           </div>
-          <div class="attribute-container">
+          <div class="attribute-container attribute-text-container">
             {% for product in section.settings.product_list %}
               <div class="comparison-column">
                 {% if block.settings.prefix %}<p class="attribute-value-prefix">{{ block.settings.prefix }}</p>{% endif %}
@@ -122,10 +122,10 @@
           <div class="attribute-title-wrapper">
             <h3 class="attribute-title">{{ block.settings.title }}</h3>
           </div>
-          <div class="attribute-container">
+          <div class="attribute-container attribrute-checkmark-container">
             {% for product in section.settings.product_list %}
               <div class="comparison-column">
-                <img width="auto" height="42" width="42" src="
+                <img class="attribute-checkmark" width="auto" src="
                 {{'attribute-checkmark' 
                 | append: '-' 
                 | append: product.metafields.lennart[block.settings.attribute].value
@@ -145,10 +145,20 @@
   .comparison-container {
     overflow-x: scroll;
     white-space: nowrap;
+    font-size: 15px;
+  }
+
+  .comparison-row {
+    min-width: 600px;
+  }
+
+  .comparison-container p {
+    white-space: normal;
   }
 
   .comparison-column {
     display: inline-block;
+    vertical-align: top;
     width: {{ '100%' | divided_by: section.settings.product_list.count }}%;
     min-width: 165px;
     padding: 10px;
@@ -162,12 +172,21 @@
   .attribute-title-wrapper {
     background: #EFEFEF;
     padding: 20px 40px;
+    min-width: 600px;
   }
 
   .comparison-product-title,
   .attribute-title,
   .large-text {
     font-size: 24px;
+  }
+
+  .large-text-md-up {
+    font-size:20px;
+  }
+
+  .bold-text {
+    font-weight: 600;
   }
 
   .attribute-title {
@@ -180,7 +199,7 @@
     height: auto;
   }
 
-  .attribute-container {
+  .attribute-icon-container {
     margin-top: 10px;
     margin-bottom: 24px;
   }
@@ -206,11 +225,42 @@
 
   .comparison-product-url {
     color: #4E26B8;
-    font-weight: 600;
     text-decoration: none;
   }
 
+  .attribrute-checkmark-container {
+    margin: 20px 0 23px 0;
+  }
+
+  .attribrute-checkmark {
+    width: 23px;
+    height: 23px;
+  }
+
+  .attribute-text-container {
+    margin-top: 20px;
+    margin-bottom: 23px;
+  }
+
+  .attribute-text-container p {
+    margin: 0;
+  }
+
+  @media screen and (max-width: 749.99px) {
+    .button {
+      font-size: 15px;
+      line-height: 15px;
+      letter-spacing: .1rem;
+      padding: 10px 20px;
+      min-width: 95px;
+      min-height: 40px;
+    }
+  }
+
   @media screen and (min-width: 750px) {
+    .comparison-container {
+      font-size: 20px;
+    }
     .attribute-title-wrapper {
       padding: 20px 65px;
     }
@@ -221,12 +271,16 @@
       font-size: 32px;
     }
 
+    .large-text-md-up {
+      font-size:32px;
+    }
+
     .comparison-product-image {
       width: 250px;
       height: auto;
     }
 
-    .attribute-container {
+    .attribute-icon-container {
       margin-top: 10px;
       margin-bottom: 40px;
     }
@@ -240,8 +294,18 @@
       height: 71px;
     }
 
-    .comparison-product-url {
-      font-size: 32px;
+    .attribrute-checkmark-container {
+      margin: 34px 0;
+    }
+
+    .attribrute-checkmark {
+      width: 42px;
+      height: 42px;
+    }
+
+    .attribute-text-container {
+      margin-top: 20px;
+      margin-bottom: 23px;
     }
   }
 {% endstyle %}
