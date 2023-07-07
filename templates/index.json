@@ -1,110 +1,5 @@
 {
   "sections": {
-    "product-comparison-test": {
-      "type": "product-comparison",
-      "blocks": {
-        "attribute1": {
-          "type": "attribute_icon",
-          "settings": {
-            "title": "Best used"
-          }
-        },
-        "attribute2": {
-          "type": "attribute_icon_list",
-          "settings": {
-            "title": "Perfect for"
-          }
-        },
-        "attribute3": {
-          "type": "attribute_text",
-          "settings": {
-            "title": "Noise reduction",
-            "attribute": "sound_reduction",
-            "prefix": "up to",
-            "suffix": "noise reduction",
-            "large_text": true
-          }
-        },
-        "attribute4": {
-          "type": "attribute_text",
-          "settings": {
-            "title": "Filter fine-tuned for"
-          }
-        },
-        "attribute5": {
-          "type": "attribute_checkmark",
-          "settings": {
-            "title": "Certified Hearing Protection"
-          }
-        },
-        "attribute6": {
-          "type": "attribute_checkmark",
-          "settings": {
-            "title": "Reusable & Sustainable"
-          }
-        },
-        "attribute7": {
-          "type": "attribute_checkmark",
-          "settings": {
-            "title": "Adjustable ear tip sizes"
-          }
-        },
-        "attribute8": {
-          "type": "attribute_checkmark",
-          "settings": {
-            "title": "Portable Carry Case"
-          }
-        },
-        "attribute9": {
-          "type": "attribute_checkmark",
-          "settings": {
-            "title": "Fully washable",
-            "attribute": "fully_washable"
-          }
-        },
-        "attribute10": {
-          "type": "attribute_text",
-          "settings": {
-            "title": "Noise Reduction Rating (NRR)",
-            "attribute": "nrr",
-            "large_text": true
-          }
-        },
-        "attribute11": {
-          "type": "attribute_checkmark",
-          "settings": {
-            "title": "100-day free  returns"
-          }
-        },
-        "attribute12": {
-          "type": "attribute",
-          "settings": {
-            "title": "Loop Mute"
-          }
-        }
-      },
-      "block_order": [
-        "attribute1",
-        "attribute2",
-        "attribute3",
-        "attribute4",
-        "attribute5",
-        "attribute6",
-        "attribute7",
-        "attribute8",
-        "attribute9",
-        "attribute10",
-        "attribute11",
-        "attribute12"
-      ],
-      "settings": {
-        "product_list": [
-          "quiet",
-          "engage",
-          "experience"
-        ]
-      }
-    },
     "1bedd7f3-5ca1-448d-ad26-e79a24cc349a": {
       "type": "loop-hero-banner",
       "blocks": {
@@ -538,7 +433,6 @@
     }
   },
   "order": [
-    "product-comparison-test",
     "1bedd7f3-5ca1-448d-ad26-e79a24cc349a",
     "f6f4f276-b004-483c-b80a-ececc2c49d2d",
     "1d5d2ea6-a74c-4f79-86b8-f74eb7a40184",
