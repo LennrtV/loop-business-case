@@ -28,9 +28,9 @@
           "settings": {
             "title": "Noise reduction",
             "attribute": "sound_reduction",
+            "large_text": true,
             "prefix": "up to",
-            "suffix": "noise reduction",
-            "large_text": true
+            "suffix": "noise reduction"
           }
         },
         "attribute4": {
@@ -107,7 +107,7 @@
       ],
       "settings": {
         "product_list": [
-          "quiet",
+          "quiet-old",
           "engage",
           "experience"
         ]
